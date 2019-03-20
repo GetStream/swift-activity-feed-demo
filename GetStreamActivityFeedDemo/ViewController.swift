@@ -24,6 +24,7 @@ class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
         
         super.viewDidLoad()
         setupTextToolBar()
+        subscribeForUpdates()
     }
     
     func setupTextToolBar() {
