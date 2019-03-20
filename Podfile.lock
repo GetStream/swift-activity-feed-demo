@@ -1,0 +1,68 @@
+PODS:
+  - Alamofire (4.8.1)
+  - Faye (1.1.3):
+    - Starscream (~> 3.0)
+  - GetStream (1.1.6):
+    - GetStream/Core (= 1.1.6)
+    - GetStream/Faye (= 1.1.6)
+  - GetStream/Core (1.1.6):
+    - Moya (~> 12.0)
+    - Result (~> 4.1)
+    - Swime (~> 3.0)
+  - GetStream/Faye (1.1.6):
+    - Faye
+    - GetStream/Core
+  - GetStreamActivityFeed (1.0.4):
+    - GetStream (~> 1.1)
+    - Nuke (~> 7.5)
+    - Reusable (~> 4.0)
+    - SnapKit (~> 4.2)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - Nuke (7.5.2)
+  - Result (4.1.0)
+  - Reusable (4.0.5):
+    - Reusable/Storyboard (= 4.0.5)
+    - Reusable/View (= 4.0.5)
+  - Reusable/Storyboard (4.0.5)
+  - Reusable/View (4.0.5)
+  - SnapKit (4.2.0)
+  - Starscream (3.0.6)
+  - Swime (3.0.1)
+
+DEPENDENCIES:
+  - GetStreamActivityFeed
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Faye
+    - GetStream
+    - GetStreamActivityFeed
+    - Moya
+    - Nuke
+    - Result
+    - Reusable
+    - SnapKit
+    - Starscream
+    - Swime
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Faye: 017b404b4ab78839f64424f41f198abb1fe061a9
+  GetStream: 88f52c1f013858f6be99f71bab273af7fef6bad1
+  GetStreamActivityFeed: 272561412133baabb074adea2014c66282b4e45d
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  Swime: da7f606c7a059f8744bc723aec243af1fb914476
+
+PODFILE CHECKSUM: 98a246c8970c2f510873861b04a2dc826b869a11
+
+COCOAPODS: 1.6.1
