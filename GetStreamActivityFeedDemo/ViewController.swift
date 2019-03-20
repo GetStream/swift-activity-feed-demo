@@ -16,7 +16,8 @@ class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
         // Setup a timeline feed presenter.
         if let feedId = FeedId(feedSlug: "timeline") {
             let timelineFlatFeed = Client.shared.flatFeed(feedId)
-            presenter = FlatFeedPresenter<GetStreamActivityFeed.Activity>(flatFeed: timelineFlatFeed)
+            presenter = FlatFeedPresenter<GetStreamActivityFeed.Activity>(flatFeed: timelineFlatFeed,
+                                                                          reactionTypes: .likes)
         }
         
         super.viewDidLoad()
