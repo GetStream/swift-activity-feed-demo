@@ -11,6 +11,8 @@ import GetStream
 import GetStreamActivityFeed
 
 class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
+    
+    let textToolBar = TextToolBar.make()
 
     override func viewDidLoad() {
         // Setup a timeline feed presenter.
@@ -21,6 +23,34 @@ class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
         }
         
         super.viewDidLoad()
+        setupTextToolBar()
+    }
+    
+    func setupTextToolBar() {
+        textToolBar.placeholderText = "Add a post"
+        textToolBar.addToSuperview(view)
+        textToolBar.sendButton.addTarget(self, action: #selector(save(_:)), for: .touchUpInside)
+    }
+    
+    @objc func save(_ sender: UIButton) {
+        // Hide the keyboard.
+        view.endEditing(true)
+        
+        // Check that entered text is not empty
+        // and get the current user, it shouldn’t be nil.
+        guard !textToolBar.text.isEmpty,
+            let user = GetStreamActivityFeed.User.current else {
+                return
+        }
+        
+        // Create a new post with entered text.
+        let activity = GetStreamActivityFeed.Activity(actor: user, verb: "post", object: .text(textToolBar.text))
+        // Clear the text field with the entered text.
+        textToolBar.text = ""
+        // Add the new Activity to the feed.
+        presenter?.flatFeed.add(activity) { result in
+            print(result)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
