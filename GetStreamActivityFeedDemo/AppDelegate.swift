@@ -8,6 +8,7 @@
 
 import UIKit
 import GetStream
+import GetStreamActivityFeed
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,9 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Setup Stream Client.
-        Client.config = .init(apiKey: "x3f6xjzfzce7",
-                              appId: "41565",
-                              token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlci1vbmUifQ.c2KyL-FpipS5de1Onyo-TZ4vJqfSB-MIb2S8C9ABrxc")
+        Client.config = .init(apiKey: "2ryhd5wu24jk",
+                              appId: "45210",
+                              token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlci1vbmUifQ.-GBDqPI-6P1_x_9CRnw_URZUHaQ-2_M5fTHRKdflsR0")
+        
+        // Setup Stream user.
+        Client.shared.getCurrentUser(typeOf: GetStreamActivityFeed.User.self) { result in
+            // Current user is ready. Load timeline feed.
+            if result.error == nil, let viewController = self.window?.rootViewController as? ViewController {
+                viewController.reloadData()
+            }
+        }
         
         return true
     }

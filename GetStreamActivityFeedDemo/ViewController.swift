@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import GetStream
+import GetStreamActivityFeed
 
-class ViewController: UIViewController {
+class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
 
     override func viewDidLoad() {
+        // Setup a timeline feed presenter.
+        if let feedId = FeedId(feedSlug: "timeline") {
+            let timelineFlatFeed = Client.shared.flatFeed(feedId)
+            presenter = FlatFeedPresenter<GetStreamActivityFeed.Activity>(flatFeed: timelineFlatFeed)
+        }
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-
 }
-
