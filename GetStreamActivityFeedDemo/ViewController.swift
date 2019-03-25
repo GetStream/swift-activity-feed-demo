@@ -13,7 +13,7 @@ import GetStreamActivityFeed
 class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
     
     let textToolBar = TextToolBar.make()
-
+    
     override func viewDidLoad() {
         // Setup a timeline feed presenter.
         if let feedId = FeedId(feedSlug: "timeline") {
@@ -28,8 +28,11 @@ class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
     }
     
     func setupTextToolBar() {
-        textToolBar.placeholderText = "Add a post"
-        textToolBar.addToSuperview(view)
+        textToolBar.addToSuperview(view, placeholderText: "Share something...")
+        // Enable URL unfurling.
+        textToolBar.linksDetectorEnabled = true
+        // Enable image picker.
+        textToolBar.enableImagePicking(with: self)
         textToolBar.sendButton.addTarget(self, action: #selector(save(_:)), for: .touchUpInside)
     }
     
@@ -39,18 +42,10 @@ class ViewController: FlatFeedViewController<GetStreamActivityFeed.Activity> {
         
         // Check that entered text is not empty
         // and get the current user, it shouldn’t be nil.
-        guard !textToolBar.text.isEmpty,
-            let user = GetStreamActivityFeed.User.current else {
-                return
-        }
-        
-        // Create a new post with entered text.
-        let activity = GetStreamActivityFeed.Activity(actor: user, verb: "post", object: .text(textToolBar.text))
-        // Clear the text field with the entered text.
-        textToolBar.text = ""
-        // Add the new Activity to the feed.
-        presenter?.flatFeed.add(activity) { result in
-            print(result)
+        if textToolBar.isValidContent, let presenter = presenter {
+            textToolBar.addActivity(to: presenter.flatFeed) { result in
+                print(result)
+            }
         }
     }
     
