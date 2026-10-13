@@ -1,3 +1,5 @@
+> **This repository is archived and will be deleted.** It is no longer maintained. For a current alternative, see [the Feeds iOS SDK](https://getstream.io/activity-feeds/sdk/ios/).
+
 ![preview of swift-activity-feed-demo](https://user-images.githubusercontent.com/1172870/55006048-63aa9080-4fdd-11e9-8a6e-db7b554c33f5.png)
 
 # Stream iOS Activity Feed Demo application
